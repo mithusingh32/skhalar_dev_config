@@ -60,7 +60,13 @@ Plug 'nvim-tree/nvim-web-devicons' " optional
 Plug 'nvim-tree/nvim-tree.lua'
 Plug 'catppuccin/nvim', { 'as': 'mocha' }
 Plug 'preservim/nerdtree'
+Plug 'windwp/nvim-autopairs'
 call plug#end()
+
+lua << EOF
+require("nvim-autopairs").setup {}
+EOF
+
 
 lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}
 
