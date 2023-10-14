@@ -4,6 +4,12 @@ repo_dir=${0:a:h}
 
 echo $repo_dir 
 
+echo "Install nvim"
+sudo mkdir /opt/neovim/
+sudo curl -Lo /opt/neovim/ https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
+sudo chmod +x /opt/neovim/*
+sudo ln -s /opt/neovim/nvim.appimage /usr/local/bin/nvim
+
 echo "installing pre-reqs"
 sudo apt install -y fd-find luarocks ripgrep curl
 sudo luarocks install jsregexp
