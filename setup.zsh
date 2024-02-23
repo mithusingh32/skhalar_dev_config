@@ -2,7 +2,7 @@
 
 repo_dir=${0:a:h}
 
-echo $repo_dir 
+echo "Install zsh or fish before continuing."
 
 echo "Install nvim"
 sudo mkdir -p /opt/neovim/
@@ -17,7 +17,17 @@ curl -L git.io/antigen > $HOME/.oh-my-zsh/custom/plugins/antigen.zsh
 chmod +x  $HOME/.oh-my-zsh/custom/plugins/antigen.zsh
 
 echo "Please install required fonts"
-# TODO automate download and install of fonsts
+font_dir="$HOME/.local/share/fonts"
+mkdir -p $font_dir
+curl -Lo $font_dir https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
+curl -Lo $font_dir https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf
+curl -Lo $font_dir https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf
+curl -Lo $font_dir https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf
+# Reset font cache on Linux
+if which fc-cache >/dev/null 2>&1 ; then
+    echo "Resetting font cache, this may take a moment..."
+    fc-cache -f "$font_dir"
+fi 
 
 echo "Setting up LazyVim"
 ln -sf $repo_dir/nvim $HOME/.config/nvim
