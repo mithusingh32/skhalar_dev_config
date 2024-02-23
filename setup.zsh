@@ -55,3 +55,6 @@ echo "Installing Jetbrain Toolbox"
 wget -cO jetbrains-toolbox.tar.gz "https://data.services.jetbrains.com/products/download?platform=linux&code=TBA"
 sudo mkdir -p /opt/jetbrains-toolbox
 sudo tar -xzf jetbrains-toolbox.tar.gz -C /opt/jetbrains-toolbox
+
+echo "Installing fisher"
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
