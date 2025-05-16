@@ -2,11 +2,16 @@
 
 repo_dir=${0:a:h}
 
-echo "Install zsh or fish before continuing."
+echo "Install zsh before continuing. Press enter once done."
+read
+
+echo "Instaling omz"
+#sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 
 echo "Install nvim"
 sudo mkdir -p /opt/neovim/
-sudo curl -Lo /opt/neovim/nvim.appimage https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
+sudo curl -Lo /opt/neovim/nvim.appimage https://github.com/neovim/neovim/releases/download/nightly/nvim-linux-x86_64.appimage
 sudo chmod +x /opt/neovim/*
 sudo ln -sf /opt/neovim/nvim.appimage /usr/local/bin/nvim
 
@@ -19,10 +24,10 @@ chmod +x  $HOME/.oh-my-zsh/custom/plugins/antigen.zsh
 echo "Please install required fonts"
 font_dir="$HOME/.local/share/fonts"
 mkdir -p $font_dir
-curl -Lo $font_dir https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
-curl -Lo $font_dir https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf
-curl -Lo $font_dir https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf
-curl -Lo $font_dir https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf
+curl -Lo $font_dir/MSGRegular.ttf https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
+curl -Lo $font_dir/MSGBold.ttf https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf
+curl -Lo $font_dir/MSGItalic.ttf https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf
+curl -Lo $font_dir/MSGBoldItalic.ttf https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf
 # Reset font cache on Linux
 if which fc-cache >/dev/null 2>&1 ; then
     echo "Resetting font cache, this may take a moment..."
